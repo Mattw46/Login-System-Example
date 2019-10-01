@@ -26,11 +26,11 @@
     $myJSON = json_encode($result);
     echo $myJSON;
 
-    if ($result["authenticated"] == true) {
+    /*if ($result["authenticated"] == true) {
         echo "Success";
     }
     else {
         echo "Failed";
     }
-    echo "\n\n";
+    echo "\n\n";*/
 ?>

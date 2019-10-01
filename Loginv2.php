@@ -1,13 +1,36 @@
 <?php
-    $first = "unset";
+    /*$first = "unset";
     $last = "unset";
-    $authenticated = "false";
     if (isset($_POST['fname']) && isset($_POST['lname'])) {
         $first = $_POST['fname'];
         $last = $_POST['lname'];
     }
-    if ($first == "user1" && $last == "abc123") {
-      $authenticated = "true";
+    echo "Hello ".$first." ".$last;*/
+
+    function authenticate($uname,$pword) {
+        if ($uname == "user1" && $pword == "abc123") {
+          //return true;
+          return $result = array("authenticated"=>true, "token"=>"abcd123456");
+        }
+        return false;
     }
-    echo "Hello ".$first." ".$last."<br> authenicated: ".$authenticated;
+    
+    $username = "unset";
+    $password = "unset";
+    if (isset($_POST['fname']) && isset($_POST['lname'])) {
+        $username = $_POST['fname'];
+        $password = $_POST['lname'];
+    }
+    $result = authenticate($username,$password);
+    //echo "result: ".$result["authenticated"]." token: ".$result["token"]."\n";
+    $myJSON = json_encode($result);
+    echo $myJSON;
+
+    if ($result["authenticated"] == true) {
+        echo "Success";
+    }
+    else {
+        echo "Failed";
+    }
+    echo "\n\n";
 ?>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    </head>
+    <body>
+    <form>
+        <input type="text" id="first">
+        <input type="text" id="second">
+    </form>
+    <button type="button" onclick="loadDoc()">Request data</button>
+
+    <p id="demo"></p>
+
+    <script>
+        function loadDoc() {
+            var first = document.getElementById("first").value;
+            var second = document.getElementById("second").value;
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("demo").innerHTML = this.responseText;
+                }
+            };
+            xhttp.open("POST", "Loginv2.php", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send("fname="+first+"&lname="+second);
+        }
+    </script>
+    <!--<script type="text/javascript" src="login.js" ></script>-->
+    </body>
+</html>
+
